@@ -8,6 +8,7 @@ use App\Http\Controllers\RentalAgentController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\AuthController;
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,7 +19,6 @@ use App\Http\Controllers\AuthController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
 
 //login i registracija
 Route::post('register', [AuthController::class, 'register']);
@@ -65,6 +65,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('cars/{id}', [CarController::class, 'update']); 
 
     Route::delete('cars/{id}', [CarController::class, 'destroy']); 
+
+
+    Route::post('logout', [AuthController::class, 'logout']);
 
 });
 

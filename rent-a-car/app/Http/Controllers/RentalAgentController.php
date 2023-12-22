@@ -8,6 +8,8 @@ use App\Http\Resources\RentalAgentResource;
 use App\Models\RentalAgent;
 use Illuminate\Support\Facades\Validator;
 
+use Illuminate\Support\Facades\Auth;
+
 class RentalAgentController extends Controller
 {
     //svi rentalagenti
@@ -27,6 +29,9 @@ class RentalAgentController extends Controller
     //nov rentalagent
     public function store(Request $request)
     {
+        //ADMIN
+        $isAdmin = Auth::user()->isAdmin;
+
     $validator = Validator::make($request->all(), [
         'name' => 'required',
         'city' => 'required',
@@ -37,6 +42,10 @@ class RentalAgentController extends Controller
 
     if ($validator->fails()) {
         return response()->json($validator->errors());
+    }
+
+    if (!$isAdmin) {
+        return response()->json(['error' => 'Unauthorized: This is an administrative function!'], 403);
     }
 
     $rentalagent = new RentalAgent();
@@ -55,6 +64,8 @@ class RentalAgentController extends Controller
     //azuriranje rentalagenta
     public function update(Request $request, $id)
     {
+         //ADMIN
+        $isAdmin = Auth::user()->isAdmin;
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'city' => 'required',
@@ -65,6 +76,10 @@ class RentalAgentController extends Controller
 
         if ($validator->fails()) {
             return response()->json($validator->errors());
+        }
+
+        if (!$isAdmin) {
+            return response()->json(['error' => 'Unauthorized: This is an administrative function!'], 403);
         }
 
         $rentalagent = RentalAgent::findOrFail($id);
@@ -83,6 +98,13 @@ class RentalAgentController extends Controller
     //brisanje rentalagenta
     public function destroy($id)
     {
+         //ADMIN
+         $isAdmin = Auth::user()->isAdmin;
+
+         if (!$isAdmin) {
+            return response()->json(['error' => 'Unauthorized: This is an administrative function!'], 403);
+        }
+        
         $rentalagent = RentalAgent::findOrFail($id);
         $rentalagent->delete();
         return response()->json('Successfuly deleted a specific rental agent!');

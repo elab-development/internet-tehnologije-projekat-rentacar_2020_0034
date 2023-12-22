@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
+
+    
+
+
     public function index()
     {
         $transactions = Transaction::all();
@@ -27,9 +31,13 @@ class TransactionController extends Controller
 
     public function updateStatus(Request $request, $id)
      {
+        //ADMIN
+        $isAdmin = Auth::user()->isAdmin;
+
         $user_id = Auth::user()->id;
         $transaction_user_id = Transaction::where('id', $id)->value('user_id');
-        if ($transaction_user_id != $user_id) {
+
+        if ($transaction_user_id != $user_id && !$isAdmin) {
             return response()->json(['error' => 'Unauthorized: User ID does not match'], 403);
         }
         
@@ -59,10 +67,6 @@ class TransactionController extends Controller
             return response()->json(['The rental agent that you have entered doesent exist in the database!']);
         }
 
-        if ($errors->has('user_id') && $errors->first('user_id') === 'The selected user id is invalid.') {
-            return response()->json(['The user that you have entered doesent exist in the database!']);
-        }
-
         if ($errors->has('car_id') && $errors->first('car_id') === 'The selected car id is invalid.') {
             return response()->json(['The car that you have entered doesent exist in the database!']);
         }
@@ -89,15 +93,20 @@ class TransactionController extends Controller
 
     public function update(Request $request, $id)
     {
+         //ADMIN
+         $isAdmin = Auth::user()->isAdmin;
+
         $user_id = Auth::user()->id;
         $transaction_user_id = Transaction::where('id', $id)->value('user_id');
+
+
         $validator = Validator::make($request->all(), [
             'status' => 'required',
             'rental_agent_id' => 'required',
             'car_id' => 'required',
         ]);
 
-        if ($transaction_user_id != $user_id) {
+        if ($transaction_user_id != $user_id && !$isAdmin) {
             return response()->json(['error' => 'Unauthorized: User ID does not match'], 403);
         }
 
@@ -106,10 +115,6 @@ class TransactionController extends Controller
     
             if ($errors->has('rental_agent_id') && $errors->first('rental_agent_id') === 'The selected rental agent id is invalid.') {
                 return response()->json(['The rental agent that you have entered doesent exist in the database!']);
-            }
-    
-            if ($errors->has('user_id') && $errors->first('user_id') === 'The selected user id is invalid.') {
-                return response()->json(['The user that you have entered doesent exist in the database!']);
             }
     
             if ($errors->has('car_id') && $errors->first('car_id') === 'The selected car id is invalid.') {
@@ -135,9 +140,13 @@ class TransactionController extends Controller
 
     public function destroy($id)
     {
+        //ADMIN
+        $isAdmin = Auth::user()->isAdmin;
+
         $user_id = Auth::user()->id;
         $transaction_user_id = Transaction::where('id', $id)->value('user_id');
-        if ($transaction_user_id != $user_id) {
+
+        if ($transaction_user_id != $user_id && !$isAdmin) {
             return response()->json(['error' => 'Unauthorized: User ID does not match'], 403);
         }
         $transaction = Transaction::findOrFail($id);

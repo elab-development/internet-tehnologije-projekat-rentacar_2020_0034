@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
+use Illuminate\Support\Facades\Auth;
+
 class CarController extends Controller
 {
     public function index()
@@ -30,6 +32,9 @@ class CarController extends Controller
       //objavljivanje novog auta
       public function store(Request $request)
       {
+
+         //ADMIN
+         $isAdmin = Auth::user()->isAdmin;
          //validacija koja sve polja moraju da se unesu
       $validator = Validator::make($request->all(), [
           'name' => 'required',
@@ -49,6 +54,11 @@ class CarController extends Controller
       if ($validator->fails()) {
           return response()->json($validator->errors());
       }
+
+      if (!$isAdmin) {
+        return response()->json(['error' => 'Unauthorized: This is an administrative function!'], 403);
+    }
+
       //generisanje imena slike
       $imageName = Str::random(32).".".$request->image->getClientOriginalExtension();
  
@@ -78,6 +88,11 @@ class CarController extends Controller
       //azuriranje auta
       public function update(Request $request, $id)
       {
+
+        //ADMIN
+        $isAdmin = Auth::user()->isAdmin;
+
+
           $validator = Validator::make($request->all(), [
             'name' => 'required',
             'description' => 'required',
@@ -97,6 +112,10 @@ class CarController extends Controller
           if ($validator->fails()) {
               return response()->json($validator->errors());
           }
+
+          if (!$isAdmin) {
+            return response()->json(['error' => 'Unauthorized: This is an administrative function!'], 403);
+        }
  
           $car = Car::find($id);
           if(!$car){
@@ -151,6 +170,13 @@ class CarController extends Controller
 
             ],404);
           }
+
+          //ADMIN
+        $isAdmin = Auth::user()->isAdmin;
+
+        if (!$isAdmin) {
+          return response()->json(['error' => 'Unauthorized: This is an administrative function!'], 403);
+      }
 
           // Public storage
           $storage = Storage::disk('public');
