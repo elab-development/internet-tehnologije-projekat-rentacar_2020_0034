@@ -17,17 +17,29 @@ use App\Http\Controllers\TransactionController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
+//USERS
 Route::get('users', [UserController::class, 'index']);
 
 Route::get('users/{id}', [UserController::class, 'show']); 
 
+
+//CARS
 Route::get('cars', [CarController::class, 'index']);
 
 Route::get('cars/{id}', [CarController::class, 'show']); 
 
+Route::post('cars', [CarController::class, 'store']);
+
+Route::put('cars/{id}', [CarController::class, 'update']); 
+
+Route::delete('cars/{id}', [CarController::class, 'destroy']); 
+
+
+//RENTALAGENTS
 Route::resource('rentalagents', RentalAgentController::class);
 
+
+//TRANSACTIONS
 Route::get('transactions', [TransactionController::class, 'index']);
 
 Route::get('transactions/{id}', [TransactionController::class, 'show']); 
