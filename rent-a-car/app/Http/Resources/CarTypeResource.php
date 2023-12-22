@@ -15,9 +15,9 @@ class CarTypeResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->resource->id,
-            'name' => $this->resource->name,
-            'description'=> $this->resource->description,
+            'ID: ' => $this->resource->id,
+            'Type name: ' => $this->resource->name,
+            'Description: '=> $this->resource->description,
         ];
     }
 }

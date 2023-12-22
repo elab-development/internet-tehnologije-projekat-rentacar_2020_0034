@@ -15,12 +15,12 @@ class RentalAgentResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->resource->id,
-            'name'=> $this->resource->name,
-            'city'=> $this->resource->city,
-            'address'=> $this->resource->address,
-            'email'=> $this->resource->email,
-            'telephone'=> $this->resource->telephone,
+            'ID: ' => $this->resource->id,
+            'Rental agent name: '=> $this->resource->name,
+            'city: '=> $this->resource->city,
+            'Address: '=> $this->resource->address,
+            'Email: '=> $this->resource->email,
+            'Telephone: '=> $this->resource->telephone,
         ];
     }
 }

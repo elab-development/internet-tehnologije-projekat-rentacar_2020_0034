@@ -18,18 +18,18 @@ class CarResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->resource->id,
-            'name' => $this->resource->name,
-            'description'=> $this->resource->description,
-            'image'=> $this->resource->image,
-            'price'=> $this->resource->price,
-            'rentTimeInDays'=> $this->resource->rentTimeInDays,
-            'VIN'=> $this->resource->VIN,
-            'fuelType'=> $this->resource->fuelType,
-            'gearType'=> $this->resource->gearType,
-            'properties'=> $this->resource->properties,
-            'registration'=> $this->resource->registration,
-            'car_type_id'=>new CarTypeResource($this->resource->carType),
+            'ID: ' => $this->resource->id,
+            'Name: ' => $this->resource->name,
+            'Description: '=> $this->resource->description,
+            'Image: '=> $this->resource->image,
+            'Price: '=> $this->resource->price,
+            'Rent time in days: '=> $this->resource->rentTimeInDays,
+            'VIN: '=> $this->resource->VIN,
+            'Fuel type: '=> $this->resource->fuelType,
+            'Gear type: '=> $this->resource->gearType,
+            'Properties: '=> $this->resource->properties,
+            'Registration: '=> $this->resource->registration,
+            'Car Type: '=>new CarTypeResource($this->resource->carType),
         ];
             
     }

@@ -26,4 +26,5 @@ class CarController extends Controller
         $cars = Car::findOrFail($id);
         return new CarResource($cars);
     }
+    
 }
