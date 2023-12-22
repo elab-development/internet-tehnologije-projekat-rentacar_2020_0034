@@ -8,6 +8,7 @@ use Database\Seeders\CarSeeder;
 use Database\Seeders\TransactionSeeder;
 use Database\Seeders\RentalAgentSeeder;
 use Database\Seeders\CarTypeSeeder;
+use Database\Seeders\UserSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,18 +24,19 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        $UserSeeder = new UserSeeder;
+        $UserSeeder->run();
+
         $CarTypeSeeder = new CarTypeSeeder;
         $CarTypeSeeder->run();
 
         $CarSeeder = new CarSeeder;
         $CarSeeder->run();
-        
-        $TransactionSeeder = new TransactionSeeder;
-        $TransactionSeeder->run();
 
         $RentalAgentSeeder = new RentalAgentSeeder;
         $RentalAgentSeeder->run();
 
-        
+        $TransactionSeeder = new TransactionSeeder;
+        $TransactionSeeder->run();
     }
 }

@@ -13,6 +13,14 @@ class RentalAgentSeeder extends Seeder
      */
     public function run(): void
     {
+        RentalAgent::create([
+            'name'=>"Milos Novakovic",
+            'city' => "Beograd",
+            'address' => "Stankova 11",
+            'email'=>"novak123@gmail.com",
+            'telephone' => "06812345678",
+        ]);
+
         RentalAgent::factory()->times(5)->create();
     }
 }
