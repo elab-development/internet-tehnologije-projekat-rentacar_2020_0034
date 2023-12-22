@@ -16,7 +16,13 @@ class Car extends Model
         'description',
         'image',
         'price',
-        'rentTimeInMonths'
+        'rentTimeInDays',
+        'VIN',
+        'fuelType',
+        'gearType',
+        'properties',
+        'registration',
+        
     ];
 
     public function transactions()
