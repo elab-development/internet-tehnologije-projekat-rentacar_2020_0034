@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\CarSeeder;
 use Database\Seeders\TransactionSeeder;
 use Database\Seeders\RentalAgentSeeder;
+use Database\Seeders\CarTypeSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,6 +22,9 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        $CarTypeSeeder = new CarTypeSeeder;
+        $CarTypeSeeder->run();
 
         $CarSeeder = new CarSeeder;
         $CarSeeder->run();
