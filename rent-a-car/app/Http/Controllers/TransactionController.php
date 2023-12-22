@@ -9,6 +9,8 @@ use App\Http\Resources\TransactionResource;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 
+use Illuminate\Support\Facades\Auth;
+
 class TransactionController extends Controller
 {
     public function index()
@@ -25,6 +27,12 @@ class TransactionController extends Controller
 
     public function updateStatus(Request $request, $id)
      {
+        $user_id = Auth::user()->id;
+        $transaction_user_id = Transaction::where('id', $id)->value('user_id');
+        if ($transaction_user_id != $user_id) {
+            return response()->json(['error' => 'Unauthorized: User ID does not match'], 403);
+        }
+        
          $request->validate([
              'status' => 'required'
          ]);
@@ -40,7 +48,6 @@ class TransactionController extends Controller
     {
     $validator = Validator::make($request->all(), [
         'status' => 'required',
-        'user_id' => 'required',
         'rental_agent_id' => 'required',
         'car_id' => 'required',
     ]);
@@ -64,9 +71,12 @@ class TransactionController extends Controller
     }
 
     $transaction = new Transaction();
+
+    $user_id = Auth::user()->id;
+
     $transaction->date = Carbon::now()->format('Y-m-d');
     $transaction->status = $request->status;
-    $transaction->user_id = $request->user_id;
+    $transaction->user_id = $user_id;
     $transaction->rental_agent_id = $request->rental_agent_id;
     $transaction->car_id = $request->car_id;
 
@@ -79,12 +89,17 @@ class TransactionController extends Controller
 
     public function update(Request $request, $id)
     {
+        $user_id = Auth::user()->id;
+        $transaction_user_id = Transaction::where('id', $id)->value('user_id');
         $validator = Validator::make($request->all(), [
             'status' => 'required',
-            'user_id' => 'required',
             'rental_agent_id' => 'required',
             'car_id' => 'required',
         ]);
+
+        if ($transaction_user_id != $user_id) {
+            return response()->json(['error' => 'Unauthorized: User ID does not match'], 403);
+        }
 
         if ($validator->fails()) {
             $errors = $validator->errors();
@@ -108,7 +123,7 @@ class TransactionController extends Controller
 
         $transaction->date = Carbon::now()->format('Y-m-d');
         $transaction->status = $request->status;
-        $transaction->user_id = $request->user_id;
+        $transaction->user_id = $user_id;
         $transaction->rental_agent_id = $request->rental_agent_id;
         $transaction->car_id = $request->car_id;
 
@@ -120,6 +135,11 @@ class TransactionController extends Controller
 
     public function destroy($id)
     {
+        $user_id = Auth::user()->id;
+        $transaction_user_id = Transaction::where('id', $id)->value('user_id');
+        if ($transaction_user_id != $user_id) {
+            return response()->json(['error' => 'Unauthorized: User ID does not match'], 403);
+        }
         $transaction = Transaction::findOrFail($id);
         $transaction->delete();
         return response()->json('You have successfuly deleted a transaction!');
