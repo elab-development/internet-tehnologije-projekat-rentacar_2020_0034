@@ -17,6 +17,7 @@ class RentalAgent extends Model
         'address',
         'email',
         'telephone',
+
     ];
 
     public function putsForRent()

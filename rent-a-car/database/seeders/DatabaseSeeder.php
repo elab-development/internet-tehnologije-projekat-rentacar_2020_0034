@@ -5,6 +5,8 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Database\Seeders\CarSeeder;
+use Database\Seeders\TransactionSeeder;
+use Database\Seeders\RentalAgentSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,5 +24,13 @@ class DatabaseSeeder extends Seeder
 
         $CarSeeder = new CarSeeder;
         $CarSeeder->run();
+        
+        $TransactionSeeder = new TransactionSeeder;
+        $TransactionSeeder->run();
+
+        $RentalAgentSeeder = new RentalAgentSeeder;
+        $RentalAgentSeeder->run();
+
+        
     }
 }

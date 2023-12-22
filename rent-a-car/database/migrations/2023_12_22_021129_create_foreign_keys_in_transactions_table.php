@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('transactions', function (Blueprint $table) {
             $table->foreignId('user_id')->nullable()->references('id')->on('users')->onDelete('set null');
-            $table->foreignId('rental_agent_id')->nullable()->references('id')->on('rental_agents')->onDelete('set null');
+            $table->foreignId('rental_agent_id')->nullable()->references('id')->on('rentalagents')->onDelete('set null');
             $table->foreignId('car_id')->nullable()->references('id')->on('cars')->onDelete('set null');
          });
     }
