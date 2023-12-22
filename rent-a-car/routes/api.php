@@ -7,6 +7,7 @@ use App\Http\Controllers\CarController;
 use App\Http\Controllers\RentalAgentController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SearchController;
 
 
 /*
@@ -38,6 +39,9 @@ Route::get('cars', [CarController::class, 'index']);
 
 Route::get('cars/{id}', [CarController::class, 'show']); 
 
+//pretraga auta po imenu
+Route::get('/search/cars', [SearchController::class, 'searchCars']);
+
 
 //TRANSACTIONS
 Route::get('transactions', [TransactionController::class, 'index']);
@@ -60,11 +64,15 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     //RENTALAGENTS
     Route::resource('rentalagents', RentalAgentController::class);
 
+
+    //CARS
     Route::post('cars', [CarController::class, 'store']);
 
     Route::put('cars/{id}', [CarController::class, 'update']); 
 
     Route::delete('cars/{id}', [CarController::class, 'destroy']); 
+
+  
 
 
     Route::post('logout', [AuthController::class, 'logout']);
