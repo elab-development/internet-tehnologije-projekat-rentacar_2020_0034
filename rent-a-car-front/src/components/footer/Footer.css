@@ -1,6 +1,6 @@
 .footer {
-  background: linear-gradient(135deg, #050507, #7C8685,#E3311D);
-  color: white;
+  background: linear-gradient(135deg, #050507,#6f6969, #7C8685,#b64a3d,#E3311D);
+  color: #050507;
   font-weight: bold;
   font-size: 19px;
   padding: 20px;
@@ -25,7 +25,7 @@
 }
 
 .social-links a {
-  color: white;
+  color: #050507;
   text-decoration: none;
   margin-left: 20px;
   font-size: 24px;
@@ -34,7 +34,7 @@
 }
 
 .social-links a:hover {
-  color: #7C8685;
+  color: #29292e;
   transform: scale(1.1);
 }
 
