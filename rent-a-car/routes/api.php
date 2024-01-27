@@ -39,6 +39,9 @@ Route::get('cars', [CarController::class, 'index']);
 
 Route::get('cars/{id}', [CarController::class, 'show']); 
 
+//RENTALAGENTS
+Route::resource('rentalagents', RentalAgentController::class);
+
 //pretraga auta po imenu
 Route::get('/search/cars', [SearchController::class, 'searchCars']);
 
@@ -61,8 +64,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     
     Route::delete('transactions/{id}', [TransactionController::class, 'destroy']); 
 
-    //RENTALAGENTS
-    Route::resource('rentalagents', RentalAgentController::class);
 
 
     //CARS

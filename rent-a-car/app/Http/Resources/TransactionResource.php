@@ -15,12 +15,12 @@ class TransactionResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'ID: ' => $this->resource->id,
-            'DATE: '=> $this->resource->date,
-            'STATUS: '=> $this->resource->status,
-            'USER WHO RENTS: '=> new UserResource($this->resource->user),
-            'RENTAL AGENT WHO PUT UP A CAR FOR RENT: '=>  new RentalAgentResource($this->resource->rentalAgent),
-            'CAR THAT IS THE MAIN POINT OF THIS TRANSACTION: '=>  new CarResource($this->resource->car),
+            'id' => $this->resource->id,
+            'date'=> $this->resource->date,
+            'status'=> $this->resource->status,
+            'user'=> new UserResource($this->resource->user),
+            'rentalAgent'=>  new RentalAgentResource($this->resource->rentalAgent),
+            'car'=>  new CarResource($this->resource->car),
         ];
     }
 }
