@@ -1,0 +1,75 @@
+.cars {
+    padding: 20px;
+    height: 1000px; 
+    display: block;
+
+    justify-content: center;
+    padding-top: 70px;
+    position: relative; 
+  }
+  
+  .cars-search {
+    margin-bottom: 50px;
+    top: 0; 
+    width: 100%; 
+    z-index: 800; 
+  }
+  
+  .search-input {
+    width: 1000px;
+    padding: 12px; 
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2px solid #7C8685; 
+    background-color: #dbdbcf; 
+    transition: background-color 0.3s; 
+    box-sizing: border-box;
+  }
+  
+  .search-input:focus {
+    outline: none; 
+    background-color: #c2bebe; 
+  }
+  
+  .cars-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 20px;
+    padding: 0 20px; 
+    margin: 0 auto; 
+  }
+  
+  .pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .page-broj {
+    padding: 10px 15px;
+    margin: 0 5px;
+    border: 1px solid #7C8685;
+    border-radius: 5px;
+    background-color: #AAACA1;
+    color: #050507;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .page-broj:hover {
+    background-color: #E3311D;
+    color: #fff;
+  }
+  
+  .page-broj:focus {
+    outline: none;
+  }
+  
+ 
+  .cars {
+    background-image: url('https://www.driving.co.uk/wp-content/uploads/sites/5/2021/06/ford-mustang-mach-e.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }

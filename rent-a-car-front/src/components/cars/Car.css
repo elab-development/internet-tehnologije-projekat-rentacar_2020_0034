@@ -1,7 +1,9 @@
 .car-container {
     background-color: #7C8685;
+
     opacity: 80%;
-    width: 40%;
+    width: 500px;
+    height: 200px;
     padding: 20px;
     border-radius: 10px;
     transition: scale 0.3s ease-out;
