@@ -1,6 +1,7 @@
 import { FaArrowLeft } from 'react-icons/fa';
 import { useParams,  useNavigate } from 'react-router-dom';
 import useCar from '../customhooks/useCar';
+import './CarDetails.css'
 
 
 const CarDetails = () => {

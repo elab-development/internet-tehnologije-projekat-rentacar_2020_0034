@@ -1,0 +1,78 @@
+.details-page {
+    background-image: url('https://idsb.tmgrup.com.tr/ly/uploads/images/2021/05/30/118050.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 700px;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .details-container {
+    background-color: #7C8685;
+    opacity: 80%;
+    width: 40%;
+    padding: 20px;
+    border-radius: 10px;
+    transition: scale 0.3s ease-out;
+    transition: opacity 0.3s ease;
+    transition: backgfround-color 0.3s ease;
+    scale: 1;
+  }
+
+  .details-container:hover {
+    opacity: 85%;
+    background-color: #9ca6a5;
+    scale: 1.01;
+  }
+  
+  .details-header {
+    margin-bottom: 20px;
+  }
+  
+  .details-title {
+    color: #E3311D;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .details-description {
+    color: #362E2D;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .details-price {
+    color: #050507;
+    font-size: 16px;
+  }
+  
+  .details-info {
+    color: #050507;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .back-to-cars-button {
+    background-color: #7C8685;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  
+  .back-to-cars-button:hover {
+    background-color: #E3311D;
+  }
+  
+  .back-to-cars-button:focus {
+    outline: none;
+  }
