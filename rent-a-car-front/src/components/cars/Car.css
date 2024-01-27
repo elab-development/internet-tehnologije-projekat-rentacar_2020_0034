@@ -1,17 +1,4 @@
-.details-page {
-    background-image: url('https://idsb.tmgrup.com.tr/ly/uploads/images/2021/05/30/118050.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 700px;
-    padding: 20px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .details-container {
+.car-container {
     background-color: #7C8685;
     opacity: 80%;
     width: 40%;
@@ -23,16 +10,13 @@
     scale: 1;
   }
 
-  .details-container:hover {
+  .car-container:hover {
     opacity: 85%;
     background-color: #9ca6a5;
     scale: 1.01;
   }
   
-  .details-header {
-    margin-bottom: 20px;
-  }
-  
+ 
   .details-title {
     color: #E3311D;
     font-size: 24px;
@@ -40,25 +24,17 @@
     margin-bottom: 10px;
   }
   
-  .details-description {
-    color: #362E2D;
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
+ 
   
   .details-price {
     color: #050507;
     font-size: 16px;
   }
   
-  .details-info {
-    color: #050507;
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
+ 
   
-  .back-to-cars-button {
-    background-color: #95a1a0;
+  .details-button {
+    background-color: #99a1a1;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -69,10 +45,10 @@
     margin-top: 20px;
   }
   
-  .back-to-cars-button:hover {
+  .details-button:hover {
     background-color: #E3311D;
   }
   
-  .back-to-cars-button:focus {
+  .details-button:focus {
     outline: none;
   }
