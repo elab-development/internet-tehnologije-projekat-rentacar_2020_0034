@@ -157,7 +157,7 @@ const deleteCar = async (req, res) => {
             _id: id
         }).populate('creator'); //učitali podaci korisnika koji je kreirao automobil
 
-        if(!CarToDelete) throw new Error('Car not found'); //ako ne postoji
+        if(!carToDelete) throw new Error('Car not found'); //ako ne postoji
 
         //zapocinje se nova transakcija u bazi podataka
         const session = await mongoose.startSession();
@@ -166,7 +166,7 @@ const deleteCar = async (req, res) => {
         //Uklanjanje auta iz baze podataka koristeći remove funkciju 
         carToDelete.remove({session});
         //uklanja referenca na automobil kod korisnika sa pull funkcijom
-        carToDelete.creator.allCars.pull(CarToDelete);
+        carToDelete.creator.allCars.pull(carToDelete);
 
         //Ažuriranje korisničkog auta u bazi podataka kako bi se uklonila referenca
         await carToDelete.creator.save({session});
