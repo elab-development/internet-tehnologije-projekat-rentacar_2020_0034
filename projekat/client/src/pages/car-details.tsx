@@ -87,14 +87,14 @@ const CarDetails = () => {
 
 
 //////////////////ADMIN/////////////////////
-//authProvider objekat koji se koristi u React aplikacijama za upravljanje autentikacijom korisnika.
-// Objekat ima pet funkcija: login, logout, checkError, checkAuth i getUserIdentity.
+//authProvider automobil koji se koristi u React aplikacijama za upravljanje autentikacijom korisnika.
+// Automobil ima pet funkcija: login, logout, checkError, checkAuth i getUserIdentity.
     const authProvider: AuthProvider = {
         
 //login se poziva kada se korisnik uloguje. Ona prima podatke o korisnikovom autentifikacionom token-u kao argument.
 // U ovoj funkciji se proverava da li je autentifikacioni token ispravan i, ako jeste, izdvoji se profileObj koji sadrži 
 //podatke o korisniku. 
-//Zatim se korisnikov name, email i avatar sačuvaju u bazi podataka, a zatim se kreira objekat user 
+//Zatim se korisnikov name, email i avatar sačuvaju u bazi podataka, a zatim se kreira automobil user 
 //koji se skladišti u localStorage. Ako je korisnik admin, to se takođe označava u localStorage.
         login: async({ credential }: CredentialResponse) => {
           const profileObj = credential ? parseJwt(credential) : null;
@@ -210,10 +210,10 @@ const CarDetails = () => {
    
 
 
-    {/*za brisanje objekta*/}
-    //handleDeleteCar() funkcija se poziva kada korisnik klikne na dugme za brisanje objekta.
+    {/*za brisanje auta*/}
+    //handleDeleteCar() funkcija se poziva kada korisnik klikne na dugme za brisanje auta.
     // U ovoj funkciji se prikazuje prozor za potvrdu brisanja, a ako korisnik potvrdi brisanje, poziva 
-    //se funkcija mutate() koja briše objekat. U slučaju uspešnog brisanja, korisnik se preusmerava na stranicu sa listom objekta.
+    //se funkcija mutate() koja briše automobil. U slučaju uspešnog brisanja, korisnik se preusmerava na stranicu sa listom auta.
     const handleDeleteCar = () => {
         const response = confirm(
             "Are you sure you want to delete this car?",
@@ -590,7 +590,7 @@ const CarDetails = () => {
 
                         </Stack>
                     </Stack>
-                    {/*iframe element za ugradnju Google mape na veb stranicu i za dinamicku implementaciju lokacije vezane za odredjeni objekat*/}
+                    {/*iframe element za ugradnju Google mape na veb stranicu i za dinamicku implementaciju lokacije vezane za odredjeni automobil*/}
                     <Stack
                         width="100%"
                         p={2}

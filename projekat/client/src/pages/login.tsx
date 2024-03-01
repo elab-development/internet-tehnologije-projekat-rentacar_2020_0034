@@ -27,7 +27,7 @@ export const Login: React.FC = () => {
           client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
           //callback funkcija koja će se izvršiti kada korisnik uspešno prijavi 
           //se na Google nalog. Callback funkcija poziva login() funkciju, koja se 
-          //dobija iz useLogin() funkcije, sa CredentialResponse objektom koji predstavlja kredencijale korisnika.
+          //dobija iz useLogin() funkcije, sa CredentialResponse objekta koji predstavlja kredencijale korisnika.
           callback: async (res: CredentialResponse) => {
             if (res.credential) {
               login(res);

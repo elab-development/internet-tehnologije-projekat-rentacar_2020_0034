@@ -26,12 +26,12 @@ const getAllCars = async (req, res) => {
     //kasnije se koristi za definisanje različitih parametara za pretraživanje baze podataka
     const query = {};
 
-    //proverava se "carType" iz zahteva i ako je definisan, dodaje se u "query" objekat kao parametar
+    //proverava se "carType" iz zahteva i ako je definisan, dodaje se u "query" automobil kao parametar
     if(carType !== ""){
         query.carType = carType;
     }
 
-    // Pronađeni objekti se dodaju u "query" objekat
+    // Pronađeni automobili se dodaju u "query" automobil
     if(title_like){
         query.title = {$regex: title_like, $options: 'i' };
     }
@@ -40,7 +40,7 @@ const getAllCars = async (req, res) => {
         //countDocuments funkcija da bi se izbrojao broj pronađenih koncerata pre slanja upita bazi podataka
         const count = await Car.countDocuments({query});
 
-        //vracaju se objekti na osnovu zahteva,ogranicenje broja rezultata i da li ima preskakanje, i sortiranje
+        //vracaju se auti na osnovu zahteva,ogranicenje broja rezultata i da li ima preskakanje, i sortiranje
         const cars = await Car
             .find(query)
             .limit(_end)
@@ -52,7 +52,7 @@ const getAllCars = async (req, res) => {
         //Vezano za CORS politiku! Dozvoljava klijentskoj pristup x-total-count, tj.
         // informaciji o ukupnom broju podataka sto je korisno za paginaciju!
         res.header('Access-Control-Expose-Headers', 'x-total-count');
-        //sve pronađene objekti se šalju kao JSON odgovor klijentskoj aplikaciji.
+        //sve pronađene auti se šalju kao JSON odgovor klijentskoj aplikaciji.
         res.status(200).json(cars);
     } catch (error) {
         res.status(500).json({message:error.message}) 
@@ -62,12 +62,12 @@ const getAllCars = async (req, res) => {
 const getCarDetails = async (req, res) => {
     //iz parametara zahteva se izdvaja id
     const { id } = req.params;
-    //da se nadje taj objekat sa tim id-em
+    //da se nadje taj automobil sa tim id-em
     const carExists = await Car.findOne({
         _id: id
-    }).populate('creator',); //da se prikaze i kreator objekta
+    }).populate('creator',); //da se prikaze i kreator auta
 
-    //salje odgovor sa detaljima objekta
+    //salje odgovor sa detaljima auta
     if(carExists) { res.status(200).json(carExists) 
     }else{
         res.status(404).json({ message: 'Car not found'});
@@ -77,7 +77,7 @@ const getCarDetails = async (req, res) => {
 const createCar = async (req, res) => {
 
     try {
-        //req.body sadrži parametre za kreiranje objekta koje je korisnik poslao preko HTTP zahteva.
+        //req.body sadrži parametre za kreiranje auta koje je korisnik poslao preko HTTP zahteva.
         const {title, description, carType, location, price, photo, email} = req.body;
 
     //zapocinje se nova transakcija u bazi podataka
@@ -89,7 +89,7 @@ const createCar = async (req, res) => {
 
     if(!user) throw new Error('User not found');
 
-    //servis da bi se slika objekta postavila na mrežu i dobila javni URL.
+    //servis da bi se slika auta postavila na mrežu i dobila javni URL.
     const photoUrl = await cloudinary.uploader.upload(photo);
 
     //novu instanca Car modela, koja se zatim dodaje u bazu podataka. 
@@ -102,7 +102,7 @@ const createCar = async (req, res) => {
         photo: photoUrl.url,
         creator: user._id
     });
-    // ID novog objekta u listu svih koncerata korisnika. Zatim se ovo ažuriranje čuva u bazi podataka.
+    // ID novog auta u listu svih koncerata korisnika. Zatim se ovo ažuriranje čuva u bazi podataka.
     user.allCars.push(newCar._id);
     await user.save({ session });
 
@@ -117,7 +117,7 @@ const createCar = async (req, res) => {
    
 
 };
-//editovanje objekta
+//editovanje auta
 const updateCar = async (req, res) => {
     try {
         //koji se menja
@@ -146,16 +146,16 @@ const updateCar = async (req, res) => {
 };
 
 
-//brisanje objekta
+//brisanje auta
 const deleteCar = async (req, res) => {
     try {
-        //koji objekat se brise
+        //koji automobil se brise
         const { id } = req.params;
 
-        //koristi za pronalaženje objekta u bazi
+        //koristi za pronalaženje auta u bazi
         const carToDelete = await Car.findById({
             _id: id
-        }).populate('creator'); //učitali podaci korisnika koji je kreirao objekat
+        }).populate('creator'); //učitali podaci korisnika koji je kreirao automobil
 
         if(!CarToDelete) throw new Error('Car not found'); //ako ne postoji
 
@@ -163,12 +163,12 @@ const deleteCar = async (req, res) => {
         const session = await mongoose.startSession();
         session.startTransaction();
 
-        //Uklanjanje objekta iz baze podataka koristeći remove funkciju 
+        //Uklanjanje auta iz baze podataka koristeći remove funkciju 
         carToDelete.remove({session});
-        //uklanja referenca na objekat kod korisnika sa pull funkcijom
+        //uklanja referenca na automobil kod korisnika sa pull funkcijom
         carToDelete.creator.allCars.pull(CarToDelete);
 
-        //Ažuriranje korisničkog objekta u bazi podataka kako bi se uklonila referenca
+        //Ažuriranje korisničkog auta u bazi podataka kako bi se uklonila referenca
         await carToDelete.creator.save({session});
         await session.commitTransaction();
 

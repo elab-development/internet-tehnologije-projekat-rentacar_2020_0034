@@ -17,7 +17,7 @@ const CreateCar = () => {
   const { refineCore: { onFinish, formLoading}, register, handleSubmit} = useForm();
 
 
-  //U handleImageChange se definise funkcija za promenu slike za objekat. 
+  //U handleImageChange se definise funkcija za promenu slike za automobil. 
   //Ova funkcija prima fajl kao argument, zatim se kreira novi Promise koji koristi FileReader API kako bi se 
   //pretvorio fajl u Data URL, nakon cega se stanje carImage azurira sa novim imenom i URL-om.
   const handleImageChange = (file: File) => {
@@ -30,11 +30,11 @@ const CreateCar = () => {
     reader(file).then((result: string) => setCarImage({ name: file?.name, url: result }));
   };
 
-//U onFinishHandler se definise funkcija koja se poziva kada se formular za kreiranje objekta zavrsi. 
-//Prvo se proverava da li je korisnik dodao sliku za objekat. Ako nije, prikazuje se upozorenje
+//U onFinishHandler se definise funkcija koja se poziva kada se formular za kreiranje auta zavrsi. 
+//Prvo se proverava da li je korisnik dodao sliku za automobil. Ako nije, prikazuje se upozorenje
   const onFinishHandler = async (data:FieldValues) => {
     if (!carImage.name) return alert('Please upload an car image');
-    // u suprotnom poziva se onFinish funkcija i salju se podaci formulara, URL slike za objekat i email korisnika.
+    // u suprotnom poziva se onFinish funkcija i salju se podaci formulara, URL slike za automobil i email korisnika.
     await onFinish({ ...data, photo: carImage.url, email: user.email });
   };
 

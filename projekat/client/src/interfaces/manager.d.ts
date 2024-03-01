@@ -11,7 +11,7 @@ export interface ManagerCardProp {
 }
 
 //InfoBarProps definiše atribute za komponentu InfoBar. 
-//Ova komponenta se koristi za prikazivanje informacija o kompaniji ili o nekom objektu
+//Ova komponenta se koristi za prikazivanje informacija o kompaniji ili o nekom autu
 export interface InfoBarProps {
     icon: ReactNode,
     name: string

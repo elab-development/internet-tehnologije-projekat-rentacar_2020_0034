@@ -15,7 +15,7 @@ function checkImage(url: any) {
     return img.width !== 0 && img.height !== 0;
 }
 
-//Komponenta InfoBar prikazuje ikonu i tekst. Prima objekat InfoBarProps koji ima dva svojstva: icon i name. 
+//Komponenta InfoBar prikazuje ikonu i tekst. Prima automobil InfoBarProps koji ima dva svojstva: icon i name. 
 //icon prikazuje ikonu koja se prosleđuje, a name prikazuje tekst. 
 const InfoBar = ({ icon, name }: InfoBarProps) => (
     <Stack

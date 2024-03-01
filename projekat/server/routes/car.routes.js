@@ -3,7 +3,7 @@ import express from 'express';
 //funkcije iz kontrolera
 import { createCar,deleteCar,getAllCars,getCarDetails,updateCar} from '../controllers/car.controller.js';
 
-//Kreiranje novog router objekta koji se koristi za definisanje novih ruta
+//Kreiranje novog router auta koji se koristi za definisanje novih ruta
 const router = express.Router();
 
 router.route('/').get(getAllCars);

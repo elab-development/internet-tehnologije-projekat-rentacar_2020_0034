@@ -18,7 +18,7 @@ const EditCar = () => {
     } = useForm();
 
 
-    //U handleImageChange se definise funkcija za promenu slike za objekat. 
+    //U handleImageChange se definise funkcija za promenu slike za automobil. 
   //Ova funkcija prima fajl kao argument, zatim se kreira novi Promise koji koristi FileReader API kako bi se 
   //pretvorio fajl u Data URL, nakon cega se stanje carImage azurira sa novim imenom i URL-om.
     const handleImageChange = (file: File) => {
@@ -34,8 +34,8 @@ const EditCar = () => {
         );
     };
 
-    //U onFinishHandler se definise funkcija koja se poziva kada se formular za kreiranje objekta zavrsi. 
-//Prvo se proverava da li je korisnik dodao sliku za objekat. Ako nije, prikazuje se upozorenje
+    //U onFinishHandler se definise funkcija koja se poziva kada se formular za kreiranje auta zavrsi. 
+//Prvo se proverava da li je korisnik dodao sliku za automobil. Ako nije, prikazuje se upozorenje
     const onFinishHandler = async (data: FieldValues) => {
         if (!carImage.name) return alert("Please upload a car image");
 

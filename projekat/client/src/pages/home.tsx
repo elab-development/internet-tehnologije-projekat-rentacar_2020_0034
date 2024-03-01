@@ -15,7 +15,7 @@ import{
  
 
 const Home = () => {
-    {/*za vracanje objekta koristimo ovu kuku */}
+    {/*za vracanje auta koristimo ovu kuku */}
     const {data, isLoading, isError} = useList({
         resource:'cars',
         config: {

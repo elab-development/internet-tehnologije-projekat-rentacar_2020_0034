@@ -5,7 +5,7 @@ import { Typography, Box, Card, CardMedia, CardContent, Stack } from "@pankod/re
 import { CarCardProps } from "interfaces/car";
 
 
-//prima parametra iz interfejsa i prikazuje na kartici objekta
+//prima parametra iz interfejsa i prikazuje na kartici automobila
 const CarCard = ({id, title, location, price, photo}: CarCardProps) => {
   return (
     <Card

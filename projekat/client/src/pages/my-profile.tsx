@@ -11,7 +11,7 @@ const MyProfile = () => {
     const { data, isLoading, isError } = useOne({
         resource: "users",
         //Izraz data?.id je JavaScript opcioni lanac (optional chaining operator) koji se koristi 
-        //kada se pokušava pristupiti svojstvu objekta koji možda ne postoji (tj. ima vrednost undefined).
+        //kada se pokušava pristupiti svojstvu auta koji možda ne postoji (tj. ima vrednost undefined).
         id: user?.userid,
     });
 

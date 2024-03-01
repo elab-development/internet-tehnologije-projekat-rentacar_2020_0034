@@ -41,7 +41,7 @@ const getUserInfoByID = async (req, res) => {
         //na osnovu ida
         const { id } = req.params;
 
-        //da se uzmu sve objekte koje je korisnik napravio
+        //da se uzmu sve aute koje je korisnik napravio
         const user = await User.findOne({ _id: id }).populate("allCars");
 
         if (user) {

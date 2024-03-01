@@ -14,7 +14,7 @@ import{
  
 
 const AdminHome = () => {
-    {/*za vracanje objekata koristimo ovu kuku */}
+    {/*za vracanje automobila koristimo ovu kuku */}
     const {data, isLoading, isError} = useList({
         resource:'cars',
         config: {
