@@ -1,0 +1,143 @@
+* {
+        font-family: "Orbitron", sans-serif;
+  }
+
+  body, .ant-typography {
+    font-family: 'Orbitron', sans-serif; /* Change 'Orbitron' to your desired font */
+    background-color: black;
+  }
+  
+  .css-1sxo9kh{
+    background-color: black !important;
+  }
+
+
+  a {
+    text-decoration: none !important;
+  }
+  
+  .my_profile-bg {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+  }
+  
+  .my_profile_user-img {
+    border-radius: 100%;
+    margin-left: -64px;
+  }
+  
+  .car_details-img {
+    width: 100%;
+  }
+  
+  @media screen and (max-width: 900px) {
+    .my_profile-bg {
+        border-radius: 15px;
+    }
+  
+    .my_profile_user-img {
+        margin-left: 0px;
+        margin-top: -64px;
+    }
+  
+    .car_details-img {
+        width: 100%;
+        height: auto;
+    }
+  }
+
+
+  .logo {
+    size: 1000px;
+  }
+
+
+  .apexcharts-legend-text {
+    color: white !important;
+  }
+
+  .apexcharts-text tspan{
+    fill: white !important;
+  }
+
+/* CSS for Typewriter Animation */
+
+.line-1 {
+  width: 24em;
+  border-right: 2px solid rgba(255, 255, 255, 0.75);
+  font-size: 180%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Animation */
+.anim-typewriter {
+  animation: typewriter 4s steps(44) infinite;
+}
+
+@keyframes typewriter {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 29em;
+  }
+}
+
+@keyframes blinkTextCursor {
+  from {
+    border-right-color: rgba(255, 255, 255, 0.75);
+  }
+
+  to {
+    border-right-color: transparent;
+  }
+}
+
+
+:root {
+  --animation-delay: 0s; /* Initial animation delay */
+}
+
+.writer-text {
+  display: inline-block;
+  overflow: hidden;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  font-size: 30px;
+  font-weight: 700;
+  border-right: 4px solid white;
+  box-sizing: border-box;
+  animation: typing 4s steps(30, end) infinite, blink .75s step-end infinite;
+  animation-delay: var(--animation-delay); /* Apply animation delay */
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
+}
+
+.my-profile-bg img {
+  width: 500px; /* Adjust the width as needed */
+  height: 250px; /* Maintain aspect ratio */
+} 
+
+
+
+
+ 
