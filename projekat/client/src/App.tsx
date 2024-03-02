@@ -10,12 +10,14 @@ import {
   ErrorComponent,
 } from "@pankod/refine-mui";
 
+import { FaCar } from "react-icons/fa";
+
 import{
   AccountCircleOutlined,
   PeopleAltOutlined,
 } from '@mui/icons-material';
 
-import { RiHotelFill } from "react-icons/ri";
+
 
 import './index.css';
 
@@ -26,6 +28,7 @@ import { ColorModeContextProvider } from "contexts";
 import { Title, Sider, Layout, Header } from "components/layout";
 import { CredentialResponse } from "interfaces/google";
 import { parseJwt } from "utils/parse-jwt";
+
 
 import { 
   Login,
@@ -176,7 +179,7 @@ if(isAdmin){
             create:CreateCar,
             show:CarDetails,
             edit:EditCar,
-            icon: <RiHotelFill style={{height:'20px', width:'20px'}}></RiHotelFill>
+            icon: <FaCar style={{height:'20px', width:'20px'}}></FaCar>
           },
           {
             name: "managers",
@@ -220,7 +223,7 @@ if(isAdmin){
               create:CreateCar,
               show:CarDetails,
               edit:EditCar,
-              icon: <RiHotelFill style={{height:'20px', width:'20px'}}></RiHotelFill>
+              icon: <FaCar style={{height:'20px', width:'20px'}}></FaCar>
             },
             {
               name: "managers",
