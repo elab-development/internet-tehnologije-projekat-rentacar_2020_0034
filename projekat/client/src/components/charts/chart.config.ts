@@ -21,16 +21,6 @@ export const TotalRevenueOptions: ApexOptions = {
     enabled: false
   },
   colors: ["#8B0000", "#fff"],
-  series: [
-    {
-      name: "Number Of Cars",
-      data: [1.4, 2, 2.5, 1.5, 2.5, 2.8, 3.8, 4.6]
-    },
-    {
-      name: "Profit",
-      data: [20, 29, 37, 36, 44, 45, 50, 58]
-    }
-  ],
   stroke: {
     width: [4, 4]
   },

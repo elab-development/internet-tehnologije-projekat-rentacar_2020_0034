@@ -11,7 +11,7 @@ const Form = ({ type, register, handleSubmit, handleImageChange, formLoading,
   return (
     <Box>
       <Typography fontSize={25} fontWeight={700} color="#fff" fontFamily="Orbitron">
-        {type} an car
+        {type} a car
       </Typography>
       <Box mt={2.5} borderRadius="15px" padding="20px" bgcolor="#fcfcfc" sx={{backgroundImage: 'url("https://st.depositphotos.com/1000350/2282/i/450/depositphotos_22823894-stock-photo-dark-concrete-texture.jpg")'}}>
           <form style={{marginTop: '20px', width: '100%', display: 'flex', flexDirection: 'column', gap: '20px',

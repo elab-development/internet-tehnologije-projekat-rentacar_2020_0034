@@ -3,7 +3,7 @@ import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import { Typography, Box, Stack} from '@pankod/refine-mui'
 import { SatisfactionBoxProps } from 'interfaces/home'
 
-import { keyframes } from '@emotion/react';
+
 
 const SatisfactionBox = ({title, value} : SatisfactionBoxProps) => {
 

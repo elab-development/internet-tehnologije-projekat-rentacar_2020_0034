@@ -6,7 +6,6 @@ import { FiActivity } from "react-icons/fi";
 
 
 import{
-    PieChart,
     CarReferrals,
     TotalRevenue,
     CarCard,
@@ -25,15 +24,6 @@ const AdminHome = () => {
 
     })
 
-
-    const { data: userData, isLoading: userIsLoading, isError: userIsError } = useList({
-        resource: 'users',
-        config: {
-            pagination: {
-                pageSize: 1,
-            },
-        },
-    });
 
 //koristi se opcionalni operator ?. da bi se izbeglo pristupanje undefined vrednostima 
 //u objektu data. Ako data ne postoji, uzmemo prazan niz umesto undefined vrednosti.
